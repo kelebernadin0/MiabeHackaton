@@ -1,0 +1,1 @@
+final String MY_CONSTANT= "AIzaSyCulVRSOVcgIEmzWuD6IU1eIAi2q0mI1VI";

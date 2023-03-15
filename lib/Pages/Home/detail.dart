@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../Models/Hotel.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'Map.dart';
-import 'package:read_more_text/read_more_text.dart';
-import 'package:badges/badges.dart' as badges;
 import 'roomPerHotel.dart';
 class DetailPage extends StatelessWidget {
-  DetailPage({super.key,required this.hotel, required this.index});
-final Hotel hotel;
+ const  DetailPage({super.key,this.index,required this.img, required this.name, required this.location,required this.price,required this.informations,required this.phone,required this.lat,required this.long,});
 final index;
+final img;
+    final name ;
+    final location;
+    final price;
+    final informations;
+    final phone;
+    final lat;
+    final long;
   @override
   Widget build(BuildContext context) {
 
@@ -37,37 +41,32 @@ final index;
     
     ];
     
-    final img= hotel.img;
-    final name =hotel.name;
-    final location= hotel.location;
-    final price =hotel.price;
-    final informations=hotel.Informations;
-    final phone =hotel.number;
+    /*;*/
     return Scaffold(
       body:CustomScrollView(
   slivers: <Widget>[
     SliverAppBar(
-     leading:Padding(padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+     leading:Padding(padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
      child: Center(
       child: ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(Colors.white),
-        padding: MaterialStatePropertyAll(EdgeInsets.only(right: 5)),
+        backgroundColor: const MaterialStatePropertyAll(Colors.white),
+        padding: const MaterialStatePropertyAll(EdgeInsets.only(right: 5)),
         shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))
       ),
       onPressed:(){
           Navigator.pop(context);
       },
-     child: Center(child:  Icon(Icons.arrow_back_ios_new,color: Colors.grey,))
+     child: const Center(child:  Icon(Icons.arrow_back_ios_new,color: Colors.grey,))
      ,),
      )
      ),
      actions: [
-      Padding(padding: EdgeInsets.all(10),
+      Padding(padding:const  EdgeInsets.all(10),
       child:  ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(Colors.white),
-        padding: MaterialStatePropertyAll(EdgeInsets.only()),
+        backgroundColor: const MaterialStatePropertyAll(Colors.white),
+        padding: const MaterialStatePropertyAll(EdgeInsets.only()),
         shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)))
       ),
       onPressed:(){
@@ -79,7 +78,7 @@ final index;
       )
      ],
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(30),
+        preferredSize: const Size.fromHeight(30),
         child: Container(
           decoration:const BoxDecoration(
             border: Border(bottom: BorderSide.none),
@@ -89,7 +88,6 @@ final index;
           child: Center(child: Text("$name",style:const  TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Color.fromARGB(255, 14, 92, 156))),),
         )
       ),
-      //pinned: true,
       expandedHeight: 400,
       flexibleSpace:FlexibleSpaceBar(
         background: Hero(tag: index, child: Image.asset("$img",width: double.maxFinite,fit: BoxFit.cover,),)
@@ -97,17 +95,17 @@ final index;
     ),
     SliverToBoxAdapter(
       child: Container(
-        child:Padding(padding: EdgeInsets.symmetric(horizontal: 10),
+        child:Padding(padding:const  EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(height: 20,),
+         const  SizedBox(height: 20,),
           Row(
-            children: [
+            children: const [
               Text("Coordonnées",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
             ],
           ),
-         Padding(padding: EdgeInsets.all(10),
+         Padding(padding: const EdgeInsets.all(10),
          child: Row(
               children: [
                 const Icon(Icons.location_on,color: Color.fromARGB(255, 248, 0, 0)),
@@ -115,31 +113,31 @@ final index;
               ],
              ),
          ),
-         Padding(padding: EdgeInsets.all(5),
+         Padding(padding:const  EdgeInsets.all(5),
          
-         child: Row(children: [Icon(Icons.phone,),SizedBox(width: 5,), Text("$phone",style: TextStyle(fontSize: 18),)])
+         child: Row(children: [const Icon(Icons.phone,),const SizedBox(width: 5,), Text("$phone",style:const TextStyle(fontSize: 18),)])
          ,),
-         Padding(padding: EdgeInsets.all(10),
+         Padding(padding:const  EdgeInsets.all(10),
          child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("Chambres Disponibles",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),Text("Voir plus",style: TextStyle(color: Colors.blue),)],
+              children: const [Text("Chambres Disponibles",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),Text("Voir plus",style: TextStyle(color: Colors.blue),)],
             ),
-            SizedBox(height: 10,),
+           const  SizedBox(height: 10,),
             Container(
               height: 100,
               child: Row(
                 children: [
-                   Padding(padding: EdgeInsets.symmetric(horizontal: 0,),
+                   Padding(padding: const EdgeInsets.symmetric(horizontal: 0,),
                    child: RoomPerHotel(price: price),
                    ),
-                    Padding(padding: EdgeInsets.all(10),
+                    Padding(padding:const  EdgeInsets.all(10),
                    child: RoomPerHotel(price: price),
                    ),
-                    Padding(padding: EdgeInsets.all(0),
+                    Padding(padding: const EdgeInsets.all(0),
                    child: RoomPerHotel(price: price),
                    ),
                     
@@ -157,7 +155,7 @@ final index;
              Row(children:const  [Text("Informations",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),],),
            const   SizedBox(height: 10,),
        
-         Text("$informations",style: TextStyle(fontSize: 15),),
+         Text("$informations",style:const  TextStyle(fontSize: 15),),
            const   SizedBox(height: 10,),
           Container(
             height: 50,
@@ -188,9 +186,9 @@ final index;
             
           ),
         
-        SizedBox(height: 15,),
+       const  SizedBox(height: 15,),
         Row(
-          children: [Text("Localisation",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),],
+          children: const [Text("Localisation",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),],
         ),
       const   SizedBox(height: 10,),
          Container(
@@ -199,14 +197,14 @@ final index;
             color: Colors.grey,
             child: GoogleMap(
               key: UniqueKey(),
-              initialCameraPosition: const CameraPosition(
-                target: LatLng(37.774, -122.4194),                      
+              initialCameraPosition:CameraPosition(
+                target: LatLng(lat, long),                      
                 zoom: 12,
               ),
               markers: {
-             const    Marker(
+               Marker(
                   markerId: MarkerId('Lome'),
-                  position: LatLng(37.774, -122.4194),
+                  position: LatLng(lat, long),
                   infoWindow: InfoWindow(title: 'Lome'),
       ),
     },
@@ -226,7 +224,7 @@ final index;
 )    ,
 bottomNavigationBar:Container(
  
-   child: Padding(padding: EdgeInsets.symmetric(horizontal:80),
+   child: Padding(padding:const  EdgeInsets.symmetric(horizontal:80),
    child: ElevatedButton(
   style: const ButtonStyle(
     shape: MaterialStatePropertyAll(RoundedRectangleBorder(

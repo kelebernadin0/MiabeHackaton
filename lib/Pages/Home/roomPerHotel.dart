@@ -8,7 +8,7 @@ class RoomPerHotel extends StatelessWidget {
     return  badges.Badge(
                     position: badges.BadgePosition.bottomEnd(),
                     badgeStyle: badges.BadgeStyle(shape: badges.BadgeShape.square,borderRadius: BorderRadius.circular(10),badgeColor: Colors.blue),
-                    badgeContent: Text("$price",style: TextStyle(color: Colors.white,
+                    badgeContent: Text("$price",style: const TextStyle(color: Colors.white,
                     fontSize: 10,
                     ),),
                     child: Container(

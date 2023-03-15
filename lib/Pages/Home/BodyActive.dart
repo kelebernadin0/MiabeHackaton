@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_quad/Models/Hotel.dart';
-import 'package:badges/badges.dart' as badges;
 import 'Rooms.dart';
-import 'Header.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import '../AccueilPage.dart';
 import 'detail.dart';
 import 'Offre.dart';
 class BodySection extends StatelessWidget {
@@ -15,12 +11,9 @@ class BodySection extends StatelessWidget {
     List<Hotel> hotels=Hotel.Hotels();
     final size=MediaQuery.of(context).size;
     return SingleChildScrollView(
-       // physics: NeverScrollableScrollPhysics(),
         child: Column(
         children: [
-          
-      
-       Padding(padding: EdgeInsets.only(right: 15,left: 15,top: 20),
+       Padding(padding:const  EdgeInsets.only(right: 15,left: 15,top: 20),
        child:  Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -40,32 +33,14 @@ class BodySection extends StatelessWidget {
         ),
        ),
       
-       Padding(padding: EdgeInsets.symmetric(vertical: 10),
+       Padding(padding: const EdgeInsets.symmetric(vertical: 10),
        child:  SizedBox(
-          height: size.height*0.5,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) {
-              return SizedBox(width: 20,);
-            },
-                itemCount: hotels.length,
-                itemBuilder: (context, index) {
-
-                    return  GestureDetector(
-                child: Hero(child:RoomSection(hotel: hotels[index],),tag:index ,),
-               onTap: (){
-                Navigator.push(context,PageRouteBuilder(pageBuilder: (_,__,___)=>DetailPage(hotel: hotels[index],index: index,)));
-               },
-              );
-          
-                },
-                
-            
-          )
+          height: size.height*0.55,
+          child: RoomSection()
           
         ),
        ),
-        Padding(padding: EdgeInsets.symmetric(horizontal: 15,vertical:20 ),
+        Padding(padding: const EdgeInsets.symmetric(horizontal: 15,vertical:20 ),
         child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
@@ -74,10 +49,10 @@ class BodySection extends StatelessWidget {
               ],
         ),
         ), 
-          OffreSection(),
-          OffreSection(),
-          OffreSection(),
-          OffreSection(),
+          const OffreSection(),
+         const OffreSection(),
+         const OffreSection(),
+         const OffreSection(),
         ],
         ),
       );
